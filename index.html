@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InstantMart — Flagship Pastel Store</title>
+  <title>InstantMart — Premium Shopping Store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -643,6 +643,241 @@
       .search-wrapper { order: 3; width: 100%; }
       .footer-grid { grid-template-columns: 1fr; }
     }
+  
+/* =========================================================
+   INSTANTMART V2 — SAMSUNG-STYLE BOTTOM NAV + POLISH
+   Keeps the original pastel/pink theme and all functionality.
+   ========================================================= */
+
+/* Premium product/card polish */
+.product-card {
+  position: relative;
+  border: 1px solid rgba(219,39,119,.10);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 38px rgba(131,24,67,.13);
+  border-color: rgba(244,114,182,.42);
+}
+.card-thumb {
+  background: linear-gradient(145deg,#fff7fb,#fce7f3);
+}
+.card-thumb img {
+  transition: transform .35s ease;
+}
+.product-card:hover .card-thumb img { transform: scale(1.045); }
+.btn-add-cart {
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.btn-add-cart:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(219,39,119,.20);
+}
+
+/* Keep the original top content, but move the main search experience below. */
+.main-nav .search-wrapper { display: none !important; }
+.nav-inner { justify-content: space-between; }
+.nav-actions { margin-left: auto; }
+
+/* Samsung-style bottom search/navigation */
+.im-bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  width: min(680px, calc(100vw - 32px));
+  height: 72px;
+  z-index: 5000;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  padding: 7px;
+  background: rgba(80,7,36,.96);
+  border: 1px solid rgba(251,207,232,.20);
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(80,7,36,.30);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.im-bottom-item {
+  height: 58px;
+  border: 0;
+  background: transparent;
+  color: #fce7f3;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  font: inherit;
+  cursor: pointer;
+  transition: .2s ease;
+}
+.im-bottom-item svg { width: 21px; height: 21px; }
+.im-bottom-item span {
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+.im-bottom-item:hover,
+.im-bottom-item.active {
+  color: #fff;
+  background: rgba(244,114,182,.20);
+}
+.im-bottom-badge {
+  position: absolute;
+  margin: -27px 0 0 25px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #e11d48;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  border: 2px solid #500724;
+}
+
+/* Search tray that rises from the bottom navigation */
+.im-search-tray {
+  position: fixed;
+  left: 50%;
+  bottom: 100px;
+  transform: translate(-50%, 18px);
+  width: min(760px, calc(100vw - 32px));
+  z-index: 4999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease, visibility .22s ease;
+}
+.im-search-tray.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.im-search-panel {
+  padding: 12px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.98);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 55px rgba(80,7,36,.22);
+  display: flex;
+  gap: 8px;
+}
+.im-search-panel select {
+  width: 145px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--pink-soft);
+  color: var(--pink-deep);
+  font-weight: 800;
+  padding: 0 10px;
+  outline: none;
+}
+.im-search-panel input {
+  min-width: 0;
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: var(--text-main);
+  outline: none;
+  font: inherit;
+}
+.im-search-panel input:focus,
+.im-search-panel select:focus {
+  border-color: var(--pink-accent);
+  box-shadow: 0 0 0 3px rgba(244,114,182,.13);
+}
+.im-search-panel button {
+  width: 48px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--pink-accent);
+  color: white;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.im-search-hint {
+  text-align: center;
+  font-size: .68rem;
+  color: var(--text-muted);
+  padding: 7px 0 1px;
+  font-weight: 700;
+}
+
+/* Extra breathing room so fixed navigation never covers content */
+body { padding-bottom: 112px; }
+
+/* Better small-screen composition */
+@media (max-width: 768px) {
+  .announcement-inner > div { display: none !important; }
+  .announcement-bar { font-size: .68rem; }
+  .nav-inner { padding: 11px 14px; }
+  .logo { font-size: 1.22rem; }
+  .nav-actions { gap: 4px; }
+  .nav-actions .action-btn {
+    min-width: 40px;
+    padding: 8px 7px;
+  }
+  .nav-actions .action-btn span:not(.badge-pill) {
+    display: none;
+  }
+  .sub-categories-inner {
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .sub-categories-inner::-webkit-scrollbar { display: none; }
+  .category-hero { min-height: 260px; }
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  .card-title { font-size: .78rem; }
+  .card-price { font-size: 1rem; }
+  .card-old-price { font-size: .67rem; }
+  .btn-add-cart { font-size: .72rem; padding: 9px 8px; }
+  .im-bottom-nav {
+    left: 8px;
+    bottom: 8px;
+    transform: none;
+    width: calc(100vw - 16px);
+    height: 68px;
+    border-radius: 22px;
+  }
+  .im-search-tray {
+    left: 8px;
+    bottom: 88px;
+    transform: translateY(18px);
+    width: calc(100vw - 16px);
+  }
+  .im-search-tray.open { transform: translateY(0); }
+  .im-search-panel { padding: 9px; }
+  .im-search-panel select { width: 105px; font-size: .72rem; }
+  .im-search-panel input { padding: 11px 10px; font-size: .78rem; }
+  body { padding-bottom: 92px; }
+}
+
+@media (max-width: 430px) {
+  .nav-actions .action-btn { padding: 7px 5px; }
+  .product-grid { gap: 8px !important; }
+  .im-bottom-item span { font-size: .60rem; }
+  .im-bottom-item svg { width: 20px; height: 20px; }
+}
+
+/* Desktop: bottom bar becomes a clean floating dock */
+@media (min-width: 769px) {
+  .im-bottom-nav { width: 620px; }
+}
+
   </style>
 </head>
 <body>
@@ -1499,6 +1734,174 @@
         if (e.target === m) m.classList.remove("open");
       });
     });
+  
+/* =========================================================
+   INSTANTMART V2 — BOTTOM NAVIGATION LOGIC
+   ========================================================= */
+(function initInstantMartBottomNav() {
+  const tray = document.getElementById("imSearchTray");
+  const searchBtn = document.getElementById("imSearchBtn");
+  const searchInput = document.getElementById("imSearchInput");
+  const searchCategory = document.getElementById("imSearchCategory");
+  const searchSubmit = document.getElementById("imSearchSubmit");
+  const topInput = document.getElementById("globalSearchInput");
+  const topCategory = document.getElementById("searchCategorySelect");
+  const bottomCart = document.getElementById("imCartBtn");
+  const bottomWish = document.getElementById("imWishlistBtn");
+  const cartBadge = document.getElementById("imCartBadge");
+  const wishBadge = document.getElementById("imWishlistBadge");
+
+  function openSearch() {
+    tray.classList.add("open");
+    tray.setAttribute("aria-hidden", "false");
+    searchBtn.classList.add("active");
+    setTimeout(() => searchInput.focus(), 80);
+  }
+
+  function closeSearch() {
+    tray.classList.remove("open");
+    tray.setAttribute("aria-hidden", "true");
+    searchBtn.classList.remove("active");
+  }
+
+  function syncSearch() {
+    if (topInput) topInput.value = searchInput.value;
+    if (topCategory) topCategory.value = searchCategory.value;
+    if (typeof applySearch === "function") applySearch();
+  }
+
+  searchBtn.addEventListener("click", () => {
+    if (tray.classList.contains("open")) closeSearch();
+    else openSearch();
+  });
+
+  searchInput.addEventListener("input", syncSearch);
+  searchCategory.addEventListener("change", syncSearch);
+  searchSubmit.addEventListener("click", () => {
+    syncSearch();
+    document.getElementById("productsGrid")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    closeSearch();
+  });
+
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      searchSubmit.click();
+    }
+    if (e.key === "Escape") closeSearch();
+  });
+
+  document.getElementById("imHomeBtn").addEventListener("click", () => {
+    closeSearch();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  document.getElementById("imCategoriesBtn").addEventListener("click", () => {
+    closeSearch();
+    document.querySelector(".sub-categories")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  bottomWish.addEventListener("click", () => {
+    closeSearch();
+    document.getElementById("wishlistBtn")?.click();
+  });
+
+  bottomCart.addEventListener("click", () => {
+    closeSearch();
+    document.getElementById("cartTriggerBtn")?.click();
+  });
+
+  /* Keep bottom badges synced with the existing cart/wishlist badges. */
+  function syncBadges() {
+    const cartSource = document.getElementById("cartCountBadge");
+    const wishSource = document.getElementById("wishlistCountBadge");
+    if (cartSource) cartBadge.textContent = cartSource.textContent || "0";
+    if (wishSource) wishBadge.textContent = wishSource.textContent || "0";
+  }
+
+  syncBadges();
+  setInterval(syncBadges, 350);
+
+  /* Close the tray when tapping outside it. */
+  document.addEventListener("click", (e) => {
+    if (!tray.contains(e.target) && !searchBtn.contains(e.target) && tray.classList.contains("open")) {
+      closeSearch();
+    }
+  });
+})();
+
   </script>
+
+<!-- INSTANTMART V2: SAMSUNG-STYLE BOTTOM NAVIGATION -->
+<div class="im-search-tray" id="imSearchTray" aria-hidden="true">
+  <div class="im-search-panel">
+    <select id="imSearchCategory" aria-label="Search category">
+      <option value="all">All Departments</option>
+      <option value="laptops">Laptops</option>
+      <option value="smartphones">Smartphones</option>
+      <option value="audio">Audio</option>
+      <option value="wearables">Wearables</option>
+    </select>
+    <input
+      id="imSearchInput"
+      type="search"
+      autocomplete="off"
+      placeholder="Search products, brands & categories..."
+      aria-label="Search InstantMart"
+    />
+    <button id="imSearchSubmit" type="button" aria-label="Search">
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8" stroke-width="2"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-4.35-4.35"/>
+      </svg>
+    </button>
+  </div>
+  <div class="im-search-hint">Search instantly • Tap Search again to close</div>
+</div>
+
+<nav class="im-bottom-nav" aria-label="InstantMart mobile navigation">
+  <button class="im-bottom-item active" id="imHomeBtn" type="button" aria-label="Home">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10z"/>
+    </svg>
+    <span>Home</span>
+  </button>
+
+  <button class="im-bottom-item" id="imSearchBtn" type="button" aria-label="Search">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7.5" stroke-width="2"/>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m20.5 20.5-4-4"/>
+    </svg>
+    <span>Search</span>
+  </button>
+
+  <button class="im-bottom-item" id="imCategoriesBtn" type="button" aria-label="Categories">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <rect x="4" y="4" width="6" height="6" rx="1" stroke-width="2"/>
+      <rect x="14" y="4" width="6" height="6" rx="1" stroke-width="2"/>
+      <rect x="4" y="14" width="6" height="6" rx="1" stroke-width="2"/>
+      <rect x="14" y="14" width="6" height="6" rx="1" stroke-width="2"/>
+    </svg>
+    <span>Categories</span>
+  </button>
+
+  <button class="im-bottom-item" id="imWishlistBtn" type="button" aria-label="Wishlist">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>
+    <span>Wishlist</span>
+    <b class="im-bottom-badge" id="imWishlistBadge">0</b>
+  </button>
+
+  <button class="im-bottom-item" id="imCartBtn" type="button" aria-label="Cart">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 7h12l1 13H5L6 7z"/>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7a3 3 0 0 1 6 0"/>
+    </svg>
+    <span>Cart</span>
+    <b class="im-bottom-badge" id="imCartBadge">0</b>
+  </button>
+</nav>
+
 </body>
 </html>
