@@ -1,112 +1,764 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>InstantMart — Online Shopping</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eaeded;color:#172033}
-.top{background:#101b2b;color:#fff;font-size:12px;text-align:center;padding:7px}.header{background:#162337;color:#fff}.row{display:flex;align-items:center;gap:18px;padding:10px 24px}.logo{font-size:30px;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-2px}.logo b{color:#24a8ff}.deliver{font-size:12px;line-height:15px;min-width:120px}.deliver strong{font-size:14px}.search{display:flex;height:44px;flex:1;max-width:760px}.search select{width:65px;border:0;border-radius:6px 0 0 6px;background:#f3f3f3}.search input{flex:1;border:0;padding:0 13px;font-size:15px}.search button{width:54px;border:0;background:#ffb347;font-size:21px;border-radius:0 6px 6px 0}.headitem{font-size:12px;white-space:nowrap}.headitem b{font-size:14px}.cart{font-size:15px;font-weight:bold}.cart span{background:#ffb000;color:#111;border-radius:10px;padding:1px 6px;margin-left:4px}.nav{display:flex;gap:25px;align-items:center;padding:10px 24px;background:#22324a;font-size:14px;overflow:auto}.nav a{color:white;text-decoration:none;white-space:nowrap;cursor:pointer}.hero{height:350px;max-width:1500px;margin:auto;position:relative;overflow:hidden;background:#dff3ff}.slide{display:none;height:100%;padding:52px 7%;background:linear-gradient(100deg,#dff4ff,#fff4df)}.slide.active{display:flex;justify-content:space-between;align-items:center}.slide h1{font-size:48px;line-height:1;margin:5px 0 15px}.slide p{font-size:18px;max-width:550px}.shop{background:#172337;color:#fff;border:0;padding:12px 20px;border-radius:5px;font-weight:bold}.hero-art{width:43%;height:260px;display:flex;align-items:center;justify-content:center}.hero-art svg{max-width:100%;max-height:100%}.arrow{position:absolute;top:42%;z-index:3;border:0;background:#ffffffd9;font-size:38px;width:45px;height:75px}.left{left:0}.right{right:0}.dots{text-align:center;position:absolute;bottom:12px;width:100%}.dots button{border:0;border-radius:50%;width:9px;height:9px;margin:3px;background:#777}.dots button.on{background:#172337}.wrap{max-width:1450px;margin:0 auto}.benefits{margin:-25px 20px 20px;position:relative;background:white;display:grid;grid-template-columns:repeat(4,1fr);box-shadow:0 3px 12px #0002}.benefit{padding:18px;display:flex;gap:12px;border-right:1px solid #ddd}.benefit:last-child{border:0}.benefit i{font-size:25px}.benefit small{display:block;color:#697586;margin-top:4px}.box{background:white;margin:20px;padding:20px}.title{display:flex;justify-content:space-between;align-items:end;margin-bottom:15px}.title h2{margin:3px 0;font-size:25px}.title a{color:#1677c9;font-weight:bold;font-size:13px;cursor:pointer}.catgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:15px}.cat{border:1px solid #ddd;border-radius:5px;background:white;padding:8px;text-align:center;cursor:pointer;transition:.15s}.cat:hover{box-shadow:0 5px 18px #0002;transform:translateY(-2px)}.catimg{height:145px;background:#f5f7f9;border-radius:4px;display:flex;align-items:center;justify-content:center}.catimg svg{width:95%;height:95%}.cat b{display:block;margin:10px 2px 3px;font-size:15px}.cat small{color:#667085}.products{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}.product{background:#fff;border:1px solid #ddd;border-radius:5px;padding:10px;min-width:0}.pimg{height:210px;background:#f6f8fa;border-radius:4px;display:flex;align-items:center;justify-content:center}.pimg svg{width:100%;height:100%}.deal{display:inline-block;background:#cc0c39;color:white;padding:4px 7px;font-size:11px;margin-top:10px}.product h3{font-size:14px;line-height:1.35;height:39px;margin:8px 0}.stars{color:#e47911;font-size:13px}.price{font-size:22px;font-weight:700;margin:6px 0}.price small{font-size:12px;color:#667085;text-decoration:line-through;font-weight:normal}.delivery{font-size:12px;color:#475467;margin:5px 0}.add{width:100%;border:1px solid #e3a008;background:#ffd814;border-radius:18px;padding:8px;font-weight:bold;cursor:pointer}.dealrow{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.dealcard{background:#f7f8fa;border-radius:7px;overflow:hidden;position:relative}.dealcard svg{width:100%;height:250px}.dealcard b{display:block;padding:12px;font-size:14px}.dealcard span{position:absolute;left:10px;top:10px;background:#cc0c39;color:#fff;padding:5px 7px;font-size:11px;font-weight:bold}.wide{display:grid;grid-template-columns:1fr 1fr;gap:20px}.banner{background:linear-gradient(110deg,#e4f7ff,#f2ecff);padding:30px;border-radius:8px;display:flex;align-items:center}.banner h2{font-size:28px;margin:5px 0}.banner p{color:#667085}.banner svg{width:180px;margin-left:auto}.footer{background:#131e2f;color:#d8dee8;margin-top:35px}.back{background:#22324a;text-align:center;padding:13px;cursor:pointer}.footgrid{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:40px 25px;gap:30px}.footgrid h4{color:#fff}.footgrid a{display:block;color:#c9d2df;font-size:13px;margin:10px 0}.copy{text-align:center;border-top:1px solid #324156;padding:18px;font-size:12px}.drawer{display:none;position:fixed;inset:0;background:#0008;z-index:99}.cartbox{position:absolute;right:0;top:0;height:100%;width:420px;max-width:100%;background:#fff;padding:25px;overflow:auto}.close{float:right;border:0;background:none;font-size:30px}.cartrow{display:grid;grid-template-columns:60px 1fr auto;gap:10px;padding:12px 0;border-bottom:1px solid #ddd}.cartrow svg{width:60px;height:60px;background:#f5f6f7}.checkout{width:100%;background:#ffd814;border:0;padding:12px;border-radius:5px;font-weight:bold}
-@media(max-width:1000px){.catgrid{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(3,1fr)}.benefits{grid-template-columns:repeat(2,1fr)}.dealrow{grid-template-columns:repeat(2,1fr)}.headitem{display:none}}
-@media(max-width:650px){.row{flex-wrap:wrap;padding:8px 12px}.search{order:5;flex-basis:100%}.hero{height:330px}.slide{padding:25px}.slide h1{font-size:32px}.hero-art{width:45%}.catgrid,.products{grid-template-columns:repeat(2,1fr)}.benefits{margin:10px 12px;grid-template-columns:1fr}.wide{grid-template-columns:1fr}.dealrow{grid-template-columns:1fr 1fr}.box{margin:12px;padding:12px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InstantMart — Online Shopping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #3a0d1b;
+      --primary-nav: #4f1426;
+      --accent-pink: #d81b60;
+      --accent-pink-hover: #ad1457;
+      --btn-cta: #e91e63;
+      --btn-cta-hover: #c2185b;
+      --badge-bg: #fce4ec;
+      --badge-text: #c2185b;
+      --bg-page: #fff5f7;
+      --card-bg: #ffffff;
+      --border-color: #f8d7e3;
+      --text-main: #2b141d;
+      --text-muted: #745663;
+      --star-color: #e91e63;
+      --radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* Top Strip */
+    .top-strip {
+      background: #270611;
+      color: #ffd1dc;
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    /* Header */
+    header {
+      background: var(--primary-dark);
+      color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-main {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 10px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .brand-logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .brand-logo span {
+      color: #ff80ab;
+    }
+
+    .deliver-to {
+      font-size: 0.75rem;
+      color: #ffccd5;
+      cursor: pointer;
+      min-width: 90px;
+    }
+    .deliver-to strong {
+      font-size: 0.88rem;
+      color: #ffffff;
+      display: block;
+    }
+
+    .search-bar {
+      flex: 1;
+      display: flex;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .search-bar select {
+      background: #fdf2f4;
+      border: none;
+      border-right: 1px solid #f8d7e3;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      color: var(--primary-dark);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      outline: none;
+      color: var(--text-main);
+    }
+
+    .search-btn {
+      background: var(--btn-cta);
+      border: none;
+      color: white;
+      padding: 0 22px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s ease;
+    }
+    .search-btn:hover {
+      background: var(--btn-cta-hover);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.8rem;
+      color: #ffccd5;
+    }
+
+    .nav-actions div {
+      cursor: pointer;
+    }
+    .nav-actions strong {
+      display: block;
+      font-size: 0.88rem;
+      color: #ffffff;
+    }
+
+    .cart-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 128, 171, 0.3);
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #ffffff;
+      transition: background 0.2s;
+    }
+    .cart-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+    .cart-count {
+      background: var(--btn-cta);
+      color: #ffffff;
+      border-radius: 99px;
+      padding: 2px 7px;
+      font-size: 0.78rem;
+    }
+
+    /* Sub Navigation */
+    .sub-nav {
+      background: var(--primary-nav);
+      display: flex;
+      gap: 18px;
+      padding: 8px 24px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .sub-nav a {
+      color: #ffe4e9;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .sub-nav a:hover {
+      color: #ffffff;
+    }
+
+    /* Hero Banner Carousel */
+    .hero-banner {
+      background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
+      padding: 48px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 20px auto 0;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(216, 27, 96, 0.08);
+    }
+    .hero-content {
+      max-width: 580px;
+      z-index: 2;
+    }
+    .hero-content small {
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-pink);
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .hero-content h1 {
+      font-size: 2.8rem;
+      line-height: 1.15;
+      margin: 8px 0 14px;
+      color: var(--primary-dark);
+      font-weight: 800;
+    }
+    .hero-content p {
+      color: #5c3545;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .hero-btn {
+      display: inline-block;
+      background: var(--primary-dark);
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .hero-btn:hover {
+      background: var(--accent-pink);
+      transform: translateY(-2px);
+    }
+
+    /* Feature Badges */
+    .features-grid {
+      max-width: 1400px;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      padding: 0 24px;
+    }
+    .feature-item {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.9rem;
+    }
+    .feature-item span.icon {
+      font-size: 1.8rem;
+    }
+    .feature-item b {
+      display: block;
+      color: var(--text-main);
+    }
+    .feature-item small {
+      color: var(--text-muted);
+    }
+
+    /* Containers & Section Titles */
+    .main-container {
+      max-width: 1400px;
+      margin: 30px auto;
+      padding: 0 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+    .section-header small {
+      text-transform: uppercase;
+      color: var(--accent-pink);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+    .section-header h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .section-header a {
+      color: var(--accent-pink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Category Cards */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .cat-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 20px 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .cat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(216, 27, 96, 0.1);
+      border-color: var(--accent-pink);
+    }
+    .cat-card b {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.95rem;
+    }
+    .cat-card small {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Product Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .product-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .product-card:hover {
+      box-shadow: 0 10px 20px rgba(216, 27, 96, 0.08);
+      border-color: #f48fb1;
+    }
+    .deal-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .product-image-box {
+      height: 160px;
+      background: #fff8f9;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      margin: 18px 0 14px;
+    }
+    .product-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+      min-height: 42px;
+    }
+    .rating {
+      color: var(--star-color);
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+    .rating span {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-left: 4px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .price-row .curr-price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .price-row .old-price {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .delivery-info {
+      font-size: 0.75rem;
+      color: #4a7751;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .btn-add {
+      margin-top: auto;
+      background: var(--btn-cta);
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-add:hover {
+      background: var(--btn-cta-hover);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-dark);
+      color: #ffebee;
+      margin-top: 60px;
+    }
+    .back-top {
+      text-align: center;
+      background: #2d0a14;
+      padding: 12px;
+      font-size: 0.85rem;
+      color: #ffccd5;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .back-top:hover {
+      background: #240710;
+    }
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 30px;
+      font-size: 0.85rem;
+    }
+    .footer-content h4 {
+      color: #ffffff;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    .footer-content a {
+      display: block;
+      color: #ffcdd8;
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: color 0.15s;
+    }
+    .footer-content a:hover {
+      color: #ffffff;
+    }
+    .footer-bottom {
+      border-top: 1px solid #4a1525;
+      text-align: center;
+      padding: 18px;
+      font-size: 0.78rem;
+      color: #f8bbd0;
+    }
+
+    @media (max-width: 768px) {
+      .header-main {
+        flex-wrap: wrap;
+      }
+      .search-bar {
+        order: 3;
+        width: 100%;
+        margin-top: 6px;
+      }
+      .hero-content h1 {
+        font-size: 1.9rem;
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="top">⚡ BIG SAVINGS EVERY DAY &nbsp; • &nbsp; Free delivery on selected orders &nbsp; • &nbsp; Secure payments</div>
-<header class="header">
-<div class="row">
-<a class="logo" href="#">instant<b>mart</b></a>
-<div class="deliver">📍 Deliver to<br><strong>India</strong></div>
-<div class="search"><select id="sel"><option>All</option><option>Electronics</option><option>Laptops</option><option>Fashion</option><option>Home Appliances</option><option>Accessories</option></select><input id="q" placeholder="Search InstantMart for products, brands and more"><button onclick="search()">🔍</button></div>
-<div class="headitem">Hello, Guest<br><b>Account &amp; Lists ▾</b></div>
-<div class="headitem">Returns<br><b>&amp; Orders</b></div>
-<div class="cart" onclick="openCart()">🛒 Cart <span id="count">0</span></div>
-</div>
-<nav class="nav"><a>☰ All</a><a onclick="filter('Electronics')">Electronics</a><a onclick="filter('Laptops')">Laptops</a><a onclick="filter('Fashion')">Fashion</a><a onclick="filter('Home Appliances')">Home &amp; Kitchen</a><a onclick="filter('Accessories')">Accessories</a><a>Today's Deals</a><a>Best Sellers</a><a>New Arrivals</a><a>Customer Service</a></nav>
-</header>
 
-<section class="hero">
-<button class="arrow left" onclick="hero(-1)">‹</button>
-<div class="slide active"><div><small>INSTANTMART EXCLUSIVE</small><h1>Shop everything.<br>Love every deal.</h1><p>Discover smart electronics, stylish fashion, laptops, home appliances and everyday accessories — all in one place.</p><button class="shop" onclick="document.getElementById('products').scrollIntoView()">Start Shopping →</button></div><div class="hero-art"><svg viewBox="0 0 500 300"><rect x="80" y="45" width="260" height="170" rx="12" fill="#172337"/><rect x="94" y="59" width="232" height="142" rx="7" fill="#63caff"/><circle cx="210" cy="130" r="42" fill="white" opacity=".7"/><path d="M40 220h340l-42 35H82z" fill="#99a7b7"/><rect x="390" y="80" width="65" height="135" rx="12" fill="white" stroke="#172337" stroke-width="6"/><circle cx="422" cy="105" r="9" fill="#172337"/></svg></div></div>
-<div class="slide"><div><small>FASHION SALE</small><h1>Fresh styles.<br>Better prices.</h1><p>Trending clothes and everyday fashion with new deals added regularly.</p><button class="shop" onclick="filter('Fashion')">Shop Fashion →</button></div><div class="hero-art"><svg viewBox="0 0 500 300"><path d="M150 55l65-35h55l65 35 75 60-48 72-40-35v105H178V152l-40 35-48-72z" fill="#ed6887"/><path d="M215 20q22 42 55 0" fill="none" stroke="white" stroke-width="12"/></svg></div></div>
-<div class="slide"><div><small>HOME &amp; KITCHEN</small><h1>Make home<br>feel smarter.</h1><p>Useful appliances and essentials for modern everyday living.</p><button class="shop" onclick="filter('Home Appliances')">Shop Home →</button></div><div class="hero-art"><svg viewBox="0 0 500 300"><path d="M125 90h250v90q0 85-125 85T125 180z" fill="#1597ff"/><path d="M175 90q0-65 70-65h10q70 0 70 65" fill="none" stroke="#172337" stroke-width="18"/><rect x="175" y="130" width="150" height="18" rx="9" fill="white" opacity=".8"/><circle cx="250" cy="205" r="28" fill="white" opacity=".8"/></svg></div></div>
-<div class="dots"><button class="on" onclick="show(0)"></button><button onclick="show(1)"></button><button onclick="show(2)"></button></div>
-<button class="arrow right" onclick="hero(1)">›</button>
-</section>
+  <div class="top-strip">
+    ⚡ BIG SAVINGS EVERY DAY &nbsp;•&nbsp; Free delivery on selected orders &nbsp;•&nbsp; Secure payments
+  </div>
 
-<div class="wrap">
-<div class="benefits">
-<div class="benefit">🚚 <div><b>Fast Delivery</b><small>Across India</small></div></div>
-<div class="benefit">🔒 <div><b>Secure Payments</b><small>100% protected</small></div></div>
-<div class="benefit">↩️ <div><b>Easy Returns</b><small>Hassle-free</small></div></div>
-<div class="benefit">💬 <div><b>Support</b><small>We're here to help</small></div></div>
-</div>
+  <header>
+    <div class="header-main">
+      <a href="#" class="brand-logo">instant<span>mart</span></a>
+      <div class="deliver-to">
+        📍 Deliver to
+        <strong>India</strong>
+      </div>
 
-<section class="box"><div class="title"><div><small>SHOP BY CATEGORY</small><h2>Explore Categories</h2></div><a>See all</a></div>
-<div class="catgrid">
-<div class="cat" onclick="filter('Electronics')"><div class="catimg"><svg viewBox="0 0 200 150"><rect x="35" y="20" width="130" height="90" rx="8" fill="#172337"/><rect x="43" y="28" width="114" height="73" fill="#58c8ff"/><rect x="85" y="112" width="30" height="8" fill="#172337"/></svg></div><b>Electronics</b><small>Phones, TVs &amp; more</small></div>
-<div class="cat" onclick="filter('Laptops')"><div class="catimg"><svg viewBox="0 0 200 150"><rect x="35" y="22" width="130" height="82" rx="7" fill="#172337"/><rect x="42" y="29" width="116" height="68" fill="#70d2ff"/><path d="M20 110h160l-20 18H40z" fill="#8e9baa"/></svg></div><b>Laptops</b><small>Work &amp; gaming</small></div>
-<div class="cat" onclick="filter('Fashion')"><div class="catimg"><svg viewBox="0 0 200 150"><path d="M62 35l30-18h16l30 18 30 25-22 30-16-12v48H70V78L54 90 32 60z" fill="#f06b89"/></svg></div><b>Fashion</b><small>Trending styles</small></div>
-<div class="cat" onclick="filter('Home Appliances')"><div class="catimg"><svg viewBox="0 0 200 150"><path d="M58 45h84v42q0 45-42 45T58 87z" fill="#1597ff"/><path d="M76 45q0-32 24-32t24 32" fill="none" stroke="#172337" stroke-width="10"/><circle cx="100" cy="80" r="15" fill="white" opacity=".8"/></svg></div><b>Home Appliances</b><small>Make life easier</small></div>
-<div class="cat" onclick="filter('Accessories')"><div class="catimg"><svg viewBox="0 0 200 150"><path d="M45 90V65q0-45 55-45t55 45v25" fill="none" stroke="#172337" stroke-width="16"/><rect x="35" y="78" width="30" height="45" rx="12" fill="#1597ff"/><rect x="135" y="78" width="30" height="45" rx="12" fill="#1597ff"/></svg></div><b>Accessories</b><small>Everyday essentials</small></div>
-<div class="cat" onclick="filter('Electronics')"><div class="catimg"><svg viewBox="0 0 200 150"><rect x="72" y="15" width="56" height="120" rx="15" fill="#172337"/><rect x="77" y="27" width="46" height="92" rx="9" fill="#63caff"/><circle cx="100" cy="128" r="3" fill="white"/></svg></div><b>Mobiles</b><small>New arrivals</small></div>
-</div></section>
+      <div class="search-bar">
+        <select id="catSelect">
+          <option value="all">All</option>
+          <option value="electronics">Electronics</option>
+          <option value="laptops">Laptops</option>
+          <option value="fashion">Fashion</option>
+          <option value="home">Home & Kitchen</option>
+          <option value="accessories">Accessories</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Search InstantMart for products, brands and more..." />
+        <button class="search-btn" onclick="filterProducts()">🔍</button>
+      </div>
 
-<section class="box"><div class="title"><div><small>LIMITED-TIME OFFERS</small><h2>Today's Top Deals</h2></div><a>See all deals →</a></div>
-<div class="dealrow">
-<div class="dealcard"><span>UP TO 40% OFF</span><svg viewBox="0 0 300 250"><rect x="40" y="50" width="220" height="130" rx="12" fill="#172337"/><rect x="52" y="62" width="196" height="106" fill="#63caff"/><path d="M25 188h250l-30 25H55z" fill="#98a5b3"/></svg><b>Powerful laptops for work &amp; study</b></div>
-<div class="dealcard"><span>UP TO 50% OFF</span><svg viewBox="0 0 300 250"><rect x="108" y="25" width="84" height="190" rx="18" fill="#172337"/><rect x="115" y="39" width="70" height="160" rx="12" fill="#5fcaff"/><circle cx="150" cy="202" r="5" fill="white"/></svg><b>Latest smartphones &amp; gadgets</b></div>
-<div class="dealcard"><span>UP TO 60% OFF</span><svg viewBox="0 0 300 250"><path d="M88 55l45-25h34l45 25 45 35-30 45-27-20v80H100v-80l-27 20-30-45z" fill="#f06b89"/></svg><b>Fashion picks for every day</b></div>
-<div class="dealcard"><span>UP TO 35% OFF</span><svg viewBox="0 0 300 250"><path d="M72 65h156v75q0 55-78 55t-78-55z" fill="#1597ff"/><path d="M103 65q0-45 47-45t47 45" fill="none" stroke="#172337" stroke-width="14"/></svg><b>Kitchen appliances &amp; essentials</b></div>
-</div></section>
+      <div class="nav-actions">
+        <div>Hello, Guest<br><strong>Account & Lists ▾</strong></div>
+        <div>Returns<br><strong>& Orders</strong></div>
+        <div class="cart-btn" onclick="alert('Cart contains ' + cartCount + ' item(s)')">
+          🛒 Cart <span class="cart-count" id="cartCount">0</span>
+        </div>
+      </div>
+    </div>
 
-<section class="box" id="products"><div class="title"><div><small>BEST PICKS</small><h2>Popular products</h2></div><a onclick="filter('all')">View all →</a></div><div id="grid" class="products"></div></section>
+    <nav class="sub-nav">
+      <a href="#">☰ All</a>
+      <a href="#">Electronics</a>
+      <a href="#">Laptops</a>
+      <a href="#">Fashion</a>
+      <a href="#">Home & Kitchen</a>
+      <a href="#">Accessories</a>
+      <a href="#">Today's Deals</a>
+      <a href="#">Best Sellers</a>
+      <a href="#">New Arrivals</a>
+      <a href="#">Customer Service</a>
+    </nav>
+  </header>
 
-<section class="box"><div class="title"><div><small>MORE TO EXPLORE</small><h2>Keep shopping</h2></div></div><div class="wide">
-<div class="banner"><div><small>SMART HOME</small><h2>Make home work smarter.</h2><p>Useful appliances for modern living.</p><button class="shop" onclick="filter('Home Appliances')">Shop Home</button></div><svg viewBox="0 0 200 180"><path d="M45 55h110v45q0 55-55 55t-55-55z" fill="#1597ff"/><path d="M70 55q0-40 30-40t30 40" fill="none" stroke="#172337" stroke-width="12"/></svg></div>
-<div class="banner"><div><small>WEARABLES</small><h2>Technology on your wrist.</h2><p>Smart watches and accessories.</p><button class="shop" onclick="filter('Accessories')">Explore</button></div><svg viewBox="0 0 200 180"><rect x="75" y="10" width="50" height="160" rx="20" fill="#172337"/><rect x="42" y="45" width="116" height="100" rx="25" fill="#1597ff" stroke="white" stroke-width="7"/><circle cx="100" cy="95" r="35" fill="#172337"/></svg></div>
-</div></section>
-</div>
+  <!-- Hero Section -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <small>INSTANTMART EXCLUSIVE</small>
+      <h1>Shop everything.<br>Love every deal.</h1>
+      <p>Discover smart electronics, stylish fashion, laptops, home appliances and everyday accessories — all in one place.</p>
+      <a href="#deals" class="hero-btn">Shop Current Deals →</a>
+    </div>
+  </section>
 
-<footer class="footer"><div class="back" onclick="scrollTo(0,0)">Back to top</div><div class="footgrid"><div><div class="logo">instant<b>mart</b></div><p>Your everyday online marketplace.</p></div><div><h4>Get to Know Us</h4><a>About InstantMart</a><a>Careers</a><a>Press</a></div><div><h4>Sell With Us</h4><a>Sell on InstantMart</a><a>Advertise Products</a><a>Affiliate Program</a></div><div><h4>Customer Care</h4><a>Help Center</a><a>Returns</a><a>Contact Us</a></div></div><div class="copy">© 2026 InstantMart • Privacy • Terms • Cookies</div></footer>
+  <!-- Key Value Props -->
+  <div class="features-grid">
+    <div class="feature-item">
+      <span class="icon">🚚</span>
+      <div><b>Fast Delivery</b><small>Across India</small></div>
+    </div>
+    <div class="feature-item">
+      <span class="icon">🔒</span>
+      <div><b>Secure Payments</b><small>100% protected</small></div>
+    </div>
+    <div class="feature-item">
+      <span class="icon">↩️</span>
+      <div><b>Easy Returns</b><small>Hassle-free guarantee</small></div>
+    </div>
+    <div class="feature-item">
+      <span class="icon">💬</span>
+      <div><b>24/7 Support</b><small>We're here to help</small></div>
+    </div>
+  </div>
 
-<div id="drawer" class="drawer" onclick="if(event.target===this)closeCart()"><div class="cartbox"><button class="close" onclick="closeCart()">×</button><h2>Shopping Cart</h2><div id="cart"></div><h3 id="total">Subtotal: ₹0</h3><button class="checkout" onclick="alert('Connect your payment gateway here for real checkout.')">Proceed to Checkout</button></div></div>
+  <div class="main-container">
+    <!-- Explore Categories -->
+    <div class="section-header">
+      <div>
+        <small>SHOP BY CATEGORY</small>
+        <h2>Explore Categories</h2>
+      </div>
+      <a href="#">See all →</a>
+    </div>
 
-<script>
-const data=[
-["Laptop Pro 15 — Intel Core i5, 16GB RAM","Laptops",54999,64999,"4.7"],
-["5G Smartphone — 128GB Storage","Electronics",16999,19999,"4.6"],
-["Smart LED TV 43-inch — 4K Ultra HD","Electronics",28999,34999,"4.8"],
-["Wireless Noise Cancelling Headphones","Accessories",2499,3999,"4.5"],
-["Premium Casual T-Shirt","Fashion",799,1299,"4.4"],
-["Smart Kitchen Mixer","Home Appliances",3999,5499,"4.6"],
-["Fitness Smart Watch","Accessories",2299,3499,"4.7"],
-["Gaming Laptop — RTX Graphics","Laptops",74999,84999,"4.8"],
-["Premium Android Phone","Electronics",24999,29999,"4.6"],
-["Everyday Oversized Shirt","Fashion",999,1599,"4.3"]
-];
-const icons={
-"Laptops":`<svg viewBox="0 0 240 210"><rect x="40" y="35" width="160" height="105" rx="9" fill="#172337"/><rect x="49" y="44" width="142" height="87" fill="#5dc9ff"/><path d="M20 150h200l-27 25H47z" fill="#94a0ad"/></svg>`,
-"Electronics":`<svg viewBox="0 0 240 210"><rect x="35" y="25" width="170" height="125" rx="12" fill="#172337"/><rect x="46" y="36" width="148" height="103" fill="#54c9ff"/><circle cx="120" cy="88" r="35" fill="white" opacity=".65"/></svg>`,
-"Fashion":`<svg viewBox="0 0 240 210"><path d="M75 42l42-25h12l42 25 48 37-34 50-29-23v72H84v-72l-29 23-34-50z" fill="#ed6988"/></svg>`,
-"Home Appliances":`<svg viewBox="0 0 240 210"><path d="M58 65h124v60q0 55-62 55t-62-55z" fill="#1597ff"/><path d="M85 65q0-42 35-42t35 42" fill="none" stroke="#172337" stroke-width="14"/><circle cx="120" cy="105" r="23" fill="white" opacity=".8"/></svg>`,
-"Accessories":`<svg viewBox="0 0 240 210"><path d="M60 120V82q0-58 60-58t60 58v38" fill="none" stroke="#172337" stroke-width="19"/><rect x="43" y="105" width="37" height="55" rx="15" fill="#1597ff"/><rect x="160" y="105" width="37" height="55" rx="15" fill="#1597ff"/></svg>`
-};
-let cart=[];
-function rupee(n){return "₹"+n.toLocaleString("en-IN")}
-function render(list=data){
-document.getElementById("grid").innerHTML=list.map((p,i)=>`<div class="product"><div class="pimg">${icons[p[1]]}</div><span class="deal">Limited Deal</span><h3>${p[0]}</h3><div class="stars">★★★★★ <span style="color:#667085">${p[4]}</span></div><div class="price">${rupee(p[2])} <small>${rupee(p[3])}</small></div><div class="delivery">FREE Delivery on eligible orders</div><button class="add" onclick="add(${i})">Add to Cart</button></div>`).join("");
-}
-function filter(cat){render(cat==="all"?data:data.filter(x=>x[1]===cat));document.getElementById("products").scrollIntoView({behavior:"smooth"})}
-function search(){let q=document.getElementById("q").value.toLowerCase(),c=document.getElementById("sel").value;render(data.filter(x=>(c==="All"||x[1]===c)&&x[0].toLowerCase().includes(q)));document.getElementById("products").scrollIntoView({behavior:"smooth"})}
-document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter")search()});
-function add(i){cart.push(data[i]);document.getElementById("count").textContent=cart.length;openCart()}
-function openCart(){document.getElementById("drawer").style.display="block";document.getElementById("cart").innerHTML=cart.length?cart.map(p=>`<div class="cartrow"><div>${icons[p[1]]}</div><div><b>${p[0]}</b><br>${rupee(p[2])}</div></div>`).join(""):"<p>Your cart is empty.</p>";document.getElementById("total").textContent="Subtotal: "+rupee(cart.reduce((s,p)=>s+p[2],0))}
-function closeCart(){document.getElementById("drawer").style.display="none"}
-let hi=0;
-function show(n){hi=n;document.querySelectorAll(".slide").forEach((x,i)=>x.classList.toggle("active",i===n));document.querySelectorAll(".dots button").forEach((x,i)=>x.classList.toggle("on",i===n))}
-function hero(d){show((hi+d+3)%3)}
-setInterval(()=>hero(1),5000);render();
-</script>
+    <div class="categories-grid">
+      <div class="cat-card"><span>📱</span><b>Electronics</b><small>Phones, TVs & more</small></div>
+      <div class="cat-card"><span>💻</span><b>Laptops</b><small>Work & gaming</small></div>
+      <div class="cat-card"><span>👗</span><b>Fashion</b><small>Trending styles</small></div>
+      <div class="cat-card"><span>🍳</span><b>Home Appliances</b><small>Make life easier</small></div>
+      <div class="cat-card"><span>🎧</span><b>Accessories</b><small>Everyday essentials</small></div>
+      <div class="cat-card"><span>⌚</span><b>Mobiles & Tech</b><small>New arrivals</small></div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="section-header" id="deals">
+      <div>
+        <small>BEST PICKS</small>
+        <h2>Popular Products</h2>
+      </div>
+      <a href="#">View all →</a>
+    </div>
+
+    <div class="products-grid" id="productGrid">
+      <!-- 1 -->
+      <div class="product-card" data-title="laptop pro 15 intel core i5">
+        <span class="deal-badge">Limited Deal</span>
+        <div class="product-image-box">💻</div>
+        <h3>Laptop Pro 15 — Intel Core i5, 16GB RAM</h3>
+        <div class="rating">★★★★★ 4.7 <span>(1,240)</span></div>
+        <div class="price-row">
+          <span class="curr-price">₹54,999</span>
+          <span class="old-price">₹64,999</span>
+        </div>
+        <div class="delivery-info">FREE Delivery on eligible orders</div>
+        <button class="btn-add" onclick="addToCart()">Add to Cart</button>
+      </div>
+
+      <!-- 2 -->
+      <div class="product-card" data-title="5g smartphone 128gb storage">
+        <span class="deal-badge">Limited Deal</span>
+        <div class="product-image-box">📱</div>
+        <h3>5G Smartphone — 128GB Storage</h3>
+        <div class="rating">★★★★★ 4.6 <span>(840)</span></div>
+        <div class="price-row">
+          <span class="curr-price">₹16,999</span>
+          <span class="old-price">₹19,999</span>
+        </div>
+        <div class="delivery-info">FREE Delivery on eligible orders</div>
+        <button class="btn-add" onclick="addToCart()">Add to Cart</button>
+      </div>
+
+      <!-- 3 -->
+      <div class="product-card" data-title="smart led tv 43-inch 4k ultra hd">
+        <span class="deal-badge">Limited Deal</span>
+        <div class="product-image-box">📺</div>
+        <h3>Smart LED TV 43-inch — 4K Ultra HD</h3>
+        <div class="rating">★★★★★ 4.8 <span>(530)</span></div>
+        <div class="price-row">
+          <span class="curr-price">₹28,999</span>
+          <span class="old-price">₹34,999</span>
+        </div>
+        <div class="delivery-info">FREE Delivery on eligible orders</div>
+        <button class="btn-add" onclick="addToCart()">Add to Cart</button>
+      </div>
+
+      <!-- 4 -->
+      <div class="product-card" data-title="wireless noise cancelling headphones">
+        <span class="deal-badge">Limited Deal</span>
+        <div class="product-image-box">🎧</div>
+        <h3>Wireless Noise Cancelling Headphones</h3>
+        <div class="rating">★★★★★ 4.5 <span>(3,110)</span></div>
+        <div class="price-row">
+          <span class="curr-price">₹2,499</span>
+          <span class="old-price">₹3,999</span>
+        </div>
+        <div class="delivery-info">FREE Delivery on eligible orders</div>
+        <button class="btn-add" onclick="addToCart()">Add to Cart</button>
+      </div>
+
+      <!-- 5 -->
+      <div class="product-card" data-title="premium casual t-shirt">
+        <span class="deal-badge">Limited Deal</span>
+        <div class="product-image-box">👕</div>
+        <h3>Premium Casual T-Shirt</h3>
+        <div class="rating">★★★★★ 4.4 <span>(640)</span></div>
+        <div class="price-row">
+          <span class="curr-price">₹799</span>
+          <span class="old-price">₹1,299</span>
+        </div>
+        <div class="delivery-info">FREE Delivery on eligible orders</div>
+        <button class="btn-add" onclick="addToCart()">Add to Cart</button>
+      </div>
+
+      <!-- 6 -->
+      <div class="product-card" data-title="fitness smart watch">
+        <span class="deal-badge">Limited Deal</span>
+        <div class="product-image-box">⌚</div>
+        <h3>Fitness Smart Watch</h3>
+        <div class="rating">★★★★★ 4.7 <span>(920)</span></div>
+        <div class="price-row">
+          <span class="curr-price">₹2,299</span>
+          <span class="old-price">₹3,499</span>
+        </div>
+        <div class="delivery-info">FREE Delivery on eligible orders</div>
+        <button class="btn-add" onclick="addToCart()">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="back-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to top</div>
+    <div class="footer-content">
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff;">instant<span style="color:#ff80ab;">mart</span></h2>
+        <p style="margin-top: 8px; color: #f8bbd0;">Your everyday online marketplace delivering quality and value right to your doorstep.</p>
+      </div>
+      <div>
+        <h4>Get to Know Us</h4>
+        <a href="#">About InstantMart</a>
+        <a href="#">Careers</a>
+        <a href="#">Press Releases</a>
+      </div>
+      <div>
+        <h4>Sell With Us</h4>
+        <a href="#">Sell on InstantMart</a>
+        <a href="#">Advertise Products</a>
+        <a href="#">Affiliate Program</a>
+      </div>
+      <div>
+        <h4>Customer Care</h4>
+        <a href="#">Help Center</a>
+        <a href="#">Returns & Replacements</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 InstantMart • Privacy • Terms • Cookies
+    </div>
+  </footer>
+
+  <script>
+    let cartCount = 0;
+
+    function addToCart() {
+      cartCount++;
+      document.getElementById('cartCount').textContent = cartCount;
+    }
+
+    function filterProducts() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.product-card');
+
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title') || '';
+        if (title.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Trigger search on Enter key
+    document.getElementById('searchInput').addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') filterProducts();
+    });
+  </script>
 </body>
 </html>
