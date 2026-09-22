@@ -1,101 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="amazon">
+<html lang="en" data-theme="baby-pink">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InstantMart — Amazon-Style Mega Store</title>
+  <title>InstantMart — Baby Pink Edition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* -------------------------------------------------------------
-       THEME VARIABLES & COLOR PALETTES
+       BABY PINK & PASTEL THEME
        ------------------------------------------------------------- */
-    :root, [data-theme="amazon"] {
-      --bg-header-main: #131921;
-      --bg-header-sub: #232f3e;
-      --bg-body: #eaeded;
+    :root {
+      --pink-soft: #fff1f5;
+      --pink-base: #fbcfe8;
+      --pink-accent: #f472b6;
+      --pink-deep: #db2777;
+      --pink-hover: #be185d;
+      --bg-header: #831843;
+      --bg-header-sub: #9d174d;
+      --bg-body: #fdf2f8;
       --surface: #ffffff;
-      --text-main: #0f1111;
-      --text-muted: #565959;
-      --brand-accent: #febd69;
-      --brand-accent-hover: #f3a847;
-      --badge-deal: #cc0c39;
-      --btn-cart: #ffd814;
-      --btn-cart-hover: #f7ca00;
-      --btn-buy: #ffa41c;
-      --btn-buy-hover: #fa8900;
-      --border: #d5d9d9;
-      --border-focus: #e77600;
-      --link: #007185;
-      --star: #de7921;
-      --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
-
-    [data-theme="modern-violet"] {
-      --bg-header-main: #0f172a;
-      --bg-header-sub: #1e1b4b;
-      --bg-body: #f1f5f9;
-      --surface: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --brand-accent: #818cf8;
-      --brand-accent-hover: #6366f1;
+      --text-main: #4a044e;
+      --text-muted: #86198f;
+      --brand-accent: #f472b6;
       --badge-deal: #e11d48;
-      --btn-cart: #6366f1;
-      --btn-cart-hover: #4f46e5;
-      --btn-buy: #ec4899;
-      --btn-buy-hover: #db2777;
-      --border: #e2e8f0;
-      --border-focus: #6366f1;
-      --link: #4f46e5;
+      --btn-cart: #f472b6;
+      --btn-cart-hover: #ec4899;
+      --btn-buy: #db2777;
+      --btn-buy-hover: #be185d;
+      --border: #fce7f3;
+      --border-focus: #f472b6;
+      --link: #db2777;
       --star: #f59e0b;
     }
 
-    [data-theme="emerald"] {
-      --bg-header-main: #064e3b;
-      --bg-header-sub: #065f46;
-      --bg-body: #f0fdf4;
-      --surface: #ffffff;
-      --text-main: #062f24;
-      --text-muted: #4b6358;
-      --brand-accent: #34d399;
-      --brand-accent-hover: #10b981;
-      --badge-deal: #dc2626;
-      --btn-cart: #10b981;
-      --btn-cart-hover: #059669;
-      --btn-buy: #f59e0b;
-      --btn-buy-hover: #d97706;
-      --border: #d1fae5;
-      --border-focus: #059669;
-      --link: #047857;
-      --star: #eab308;
-    }
-
-    [data-theme="slate-dark"] {
-      --bg-header-main: #090d16;
-      --bg-header-sub: #131b2e;
-      --bg-body: #0b1120;
-      --surface: #1e293b;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --brand-accent: #38bdf8;
-      --brand-accent-hover: #0284c7;
-      --badge-deal: #f43f5e;
-      --btn-cart: #38bdf8;
-      --btn-cart-hover: #0ea5e9;
-      --btn-buy: #f59e0b;
-      --btn-buy-hover: #d97706;
-      --border: #334155;
-      --border-focus: #38bdf8;
-      --link: #38bdf8;
-      --star: #fbbf24;
-    }
-
-    /* -------------------------------------------------------------
-       GLOBAL RESETS
-       ------------------------------------------------------------- */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -103,197 +43,29 @@
     }
 
     body {
-      font-family: var(--font-family);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-body);
       color: var(--text-main);
       line-height: 1.4;
       overflow-x: hidden;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      /* Padding at bottom so bottom-fixed nav never covers content */
+      padding-bottom: 120px;
     }
 
     .wrapper {
-      max-width: 1480px;
+      max-width: 1440px;
       margin: 0 auto;
       padding: 0 16px;
     }
 
     /* -------------------------------------------------------------
-       TOP NAVIGATION & SEARCH BAR
-       ------------------------------------------------------------- */
-    .header-primary {
-      background-color: var(--bg-header-main);
-      color: #ffffff;
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 1.4rem;
-      font-weight: 800;
-      padding: 6px 8px;
-      border: 1px solid transparent;
-      border-radius: 4px;
-    }
-    .brand-logo:hover { border-color: #ffffff; }
-    .brand-logo span { color: var(--brand-accent); }
-
-    .nav-deliver {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      padding: 6px 8px;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-    .nav-deliver:hover { border-color: #ffffff; }
-    .nav-deliver small { display: block; font-size: 0.7rem; color: #ccc; }
-    .nav-deliver strong { font-size: 0.85rem; font-weight: 700; }
-
-    .nav-search {
-      flex: 1;
-      display: flex;
-      height: 40px;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .nav-search:focus-within {
-      box-shadow: 0 0 0 3px var(--border-focus);
-    }
-    .search-scope {
-      background: #e6e6e6;
-      border: none;
-      padding: 0 10px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #333;
-      border-right: 1px solid #ccc;
-      outline: none;
-      cursor: pointer;
-    }
-    .search-input {
-      flex: 1;
-      border: none;
-      padding: 0 12px;
-      font-size: 0.95rem;
-      outline: none;
-    }
-    .search-submit {
-      background-color: var(--brand-accent);
-      border: none;
-      width: 46px;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-    .search-submit:hover { background-color: var(--brand-accent-hover); }
-
-    .theme-selector-box {
-      display: flex;
-      flex-direction: column;
-      font-size: 0.75rem;
-      color: #ccc;
-    }
-    .theme-dropdown {
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: #fff;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      outline: none;
-    }
-    .theme-dropdown option {
-      background: #1e293b;
-      color: #fff;
-    }
-
-    .nav-account, .nav-orders {
-      text-decoration: none;
-      color: #ffffff;
-      padding: 6px 8px;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-    .nav-account:hover, .nav-orders:hover { border-color: #ffffff; }
-    .nav-account small, .nav-orders small { display: block; font-size: 0.7rem; color: #ccc; }
-    .nav-account strong, .nav-orders strong { font-size: 0.85rem; font-weight: 700; }
-
-    .nav-cart-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      color: #ffffff;
-      padding: 6px 10px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-    .nav-cart-btn:hover { border-color: #ffffff; }
-    .cart-pill {
-      background-color: var(--brand-accent);
-      color: #111;
-      font-weight: 800;
-      font-size: 0.75rem;
-      border-radius: 999px;
-      padding: 1px 7px;
-    }
-
-    /* -------------------------------------------------------------
-       SUB-NAV CATEGORY BAR
-       ------------------------------------------------------------- */
-    .header-secondary {
-      background-color: var(--bg-header-sub);
-      color: #ffffff;
-      padding: 0 16px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      font-size: 0.86rem;
-    }
-    .header-secondary::-webkit-scrollbar { display: none; }
-    .header-secondary a {
-      color: #ffffff;
-      text-decoration: none;
-      padding: 8px 6px;
-      white-space: nowrap;
-      border: 1px solid transparent;
-      border-radius: 3px;
-    }
-    .header-secondary a:hover { border-color: #ffffff; }
-    .header-secondary .highlight-pill {
-      color: var(--brand-accent);
-      font-weight: 700;
-    }
-
-    /* -------------------------------------------------------------
-       HERO BANNER & CAROUSEL
+       HERO BANNER (NOW SITS AT TOP OF SCREEN)
        ------------------------------------------------------------- */
     .hero-stage {
       position: relative;
-      height: 480px;
+      height: 440px;
       overflow: hidden;
-      margin-bottom: -220px;
+      margin-bottom: -180px;
       mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
       -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
     }
@@ -308,28 +80,31 @@
     .carousel-slide.active { opacity: 1; }
     .hero-prev, .hero-next {
       position: absolute;
-      top: 140px;
-      background: rgba(255, 255, 255, 0.4);
+      top: 130px;
+      background: rgba(255, 255, 255, 0.7);
       border: 2px solid transparent;
-      border-radius: 4px;
+      border-radius: 999px;
       width: 44px;
-      height: 60px;
+      height: 44px;
       display: grid;
       place-items: center;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       cursor: pointer;
       z-index: 10;
-      color: #111;
+      color: var(--pink-deep);
+      box-shadow: 0 4px 12px rgba(219, 39, 119, 0.15);
+      transition: 0.2s;
     }
     .hero-prev:hover, .hero-next:hover {
-      background: rgba(255, 255, 255, 0.85);
-      border-color: #007185;
+      background: #ffffff;
+      color: var(--pink-hover);
+      transform: scale(1.05);
     }
     .hero-prev { left: 16px; }
     .hero-next { right: 16px; }
 
     /* -------------------------------------------------------------
-       AMAZON 4-CARD DISCOVERY GRID
+       DISCOVERY QUAD GRID
        ------------------------------------------------------------- */
     .quad-grid {
       position: relative;
@@ -342,16 +117,17 @@
     .quad-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 16px;
       padding: 20px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 24px -4px rgba(244, 114, 182, 0.12);
     }
     .quad-card h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.2rem;
+      font-weight: 800;
       margin-bottom: 14px;
+      color: var(--pink-deep);
     }
     .quad-thumbnails {
       display: grid;
@@ -361,68 +137,70 @@
     }
     .quad-item {
       text-decoration: none;
-      color: inherit;
+      color: var(--text-main);
     }
     .quad-item img {
       width: 100%;
       height: 110px;
       object-fit: cover;
-      border-radius: 6px;
-      background: #f1f5f9;
+      border-radius: 10px;
+      background: var(--pink-soft);
       transition: transform 0.2s;
     }
-    .quad-item:hover img { transform: scale(1.03); }
+    .quad-item:hover img { transform: scale(1.04); }
     .quad-item small {
       display: block;
       font-size: 0.75rem;
       margin-top: 4px;
-      font-weight: 500;
+      font-weight: 600;
     }
     .quad-card .see-more {
       margin-top: 14px;
       color: var(--link);
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
     }
     .quad-card .see-more:hover { text-decoration: underline; }
 
     /* -------------------------------------------------------------
-       LIGHTNING DEAL HORIZONTAL STRIP
+       DEAL BANNER
        ------------------------------------------------------------- */
     .deal-banner {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+      border: 1px solid var(--pink-base);
+      border-radius: 14px;
       padding: 16px 20px;
       margin-bottom: 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: 0 4px 16px rgba(244, 114, 182, 0.1);
     }
     .deal-badge {
       background-color: var(--badge-deal);
       color: #ffffff;
       padding: 4px 10px;
       font-weight: 800;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 0.8rem;
       margin-right: 12px;
     }
     .deal-timer {
-      font-weight: 700;
-      color: var(--badge-deal);
+      font-weight: 800;
+      color: var(--pink-deep);
     }
 
     /* -------------------------------------------------------------
-       STANDARD PRODUCT CATALOG
+       CATALOG
        ------------------------------------------------------------- */
     .catalog-wrapper {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 16px;
       padding: 24px;
       margin-bottom: 40px;
+      box-shadow: 0 8px 24px -4px rgba(244, 114, 182, 0.08);
     }
     .catalog-title {
       font-size: 1.4rem;
@@ -431,25 +209,27 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      color: var(--pink-deep);
     }
     .filter-tabs {
       display: flex;
       gap: 8px;
     }
     .filter-pill {
-      background: var(--bg-body);
+      background: var(--pink-soft);
       border: 1px solid var(--border);
       padding: 6px 14px;
       border-radius: 999px;
       font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      color: var(--text-main);
+      color: var(--pink-deep);
+      transition: 0.2s;
     }
     .filter-pill.active {
-      background: var(--bg-header-main);
+      background: var(--pink-deep);
       color: #ffffff;
-      border-color: var(--bg-header-main);
+      border-color: var(--pink-deep);
     }
 
     .products-row {
@@ -459,7 +239,7 @@
     }
     .product-box {
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 14px;
       padding: 16px;
       display: flex;
       flex-direction: column;
@@ -468,8 +248,8 @@
       transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
     .product-box:hover {
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(244, 114, 182, 0.2);
+      transform: translateY(-3px);
     }
     .badge-percent {
       position: absolute;
@@ -479,30 +259,31 @@
       color: #ffffff;
       font-weight: 800;
       font-size: 0.72rem;
-      padding: 2px 6px;
-      border-radius: 4px;
+      padding: 3px 7px;
+      border-radius: 6px;
+      z-index: 2;
     }
     .product-img-box {
       height: 180px;
       display: grid;
       place-items: center;
       margin-bottom: 14px;
-      background: #ffffff;
-      border-radius: 6px;
+      background: var(--pink-soft);
+      border-radius: 10px;
       overflow: hidden;
     }
     .product-img-box img {
       max-height: 100%;
       max-width: 100%;
-      object-fit: contain;
-      transition: transform 0.2s;
+      object-fit: cover;
+      transition: transform 0.25s;
     }
     .product-box:hover .product-img-box img {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
     .product-name {
       font-size: 0.92rem;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.35;
       height: 2.7rem;
       overflow: hidden;
@@ -518,7 +299,7 @@
       margin-bottom: 6px;
     }
     .product-rating span {
-      color: var(--link);
+      color: var(--text-muted);
       font-size: 0.75rem;
       margin-left: 4px;
     }
@@ -528,8 +309,8 @@
       gap: 8px;
       margin-bottom: 4px;
     }
-    .price-symbol { font-size: 0.8rem; vertical-align: top; }
-    .price-main { font-size: 1.35rem; font-weight: 800; }
+    .price-symbol { font-size: 0.8rem; font-weight: 700; }
+    .price-main { font-size: 1.35rem; font-weight: 800; color: var(--pink-deep); }
     .price-crossed {
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -538,35 +319,166 @@
     .prime-tag {
       font-size: 0.75rem;
       font-weight: 700;
-      color: #007185;
+      color: var(--pink-deep);
       margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
     }
     .btn-add-cart {
       margin-top: auto;
-      background-color: var(--btn-cart);
-      color: #0f1111;
-      border: 1px solid rgba(0,0,0,0.1);
-      padding: 8px 12px;
+      background-color: var(--pink-accent);
+      color: #ffffff;
+      border: none;
+      padding: 9px 14px;
       border-radius: 999px;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      transition: background 0.15s;
+      transition: background 0.15s, transform 0.15s;
+      box-shadow: 0 4px 12px rgba(244, 114, 182, 0.3);
     }
     .btn-add-cart:hover {
-      background-color: var(--btn-cart-hover);
+      background-color: var(--pink-deep);
+      transform: translateY(-1px);
     }
 
     /* -------------------------------------------------------------
-       SLIDE-OUT CART DRAWER
+       MOVED NAVIGATION: FIXED BOTTOM BAR DOCK
+       ------------------------------------------------------------- */
+    .bottom-nav-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(131, 24, 67, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 1000;
+      box-shadow: 0 -8px 24px rgba(131, 24, 67, 0.25);
+    }
+
+    .bottom-primary {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 20px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+    .brand-logo span { color: var(--pink-base); }
+
+    .nav-search {
+      flex: 1;
+      display: flex;
+      height: 38px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--pink-base);
+    }
+    .nav-search:focus-within {
+      box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.4);
+    }
+    .search-scope {
+      background: var(--pink-soft);
+      border: none;
+      padding: 0 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--pink-deep);
+      border-right: 1px solid var(--border);
+      outline: none;
+      cursor: pointer;
+    }
+    .search-input {
+      flex: 1;
+      border: none;
+      padding: 0 14px;
+      font-size: 0.9rem;
+      outline: none;
+      color: var(--text-main);
+    }
+    .search-submit {
+      background-color: var(--pink-accent);
+      border: none;
+      width: 44px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .search-submit:hover { background-color: var(--pink-deep); }
+
+    .nav-cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pink-deep);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 999px;
+      color: #ffffff;
+      padding: 7px 16px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.88rem;
+      box-shadow: 0 4px 12px rgba(219, 39, 119, 0.35);
+      transition: transform 0.15s;
+    }
+    .nav-cart-btn:hover { transform: translateY(-1px); }
+    .cart-pill {
+      background-color: #ffffff;
+      color: var(--pink-deep);
+      font-weight: 800;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      padding: 1px 7px;
+    }
+
+    .bottom-categories {
+      background: rgba(157, 23, 77, 0.95);
+      padding: 6px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      font-size: 0.82rem;
+    }
+    .bottom-categories::-webkit-scrollbar { display: none; }
+    .bottom-categories a {
+      color: #fdf2f8;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+      padding: 2px 8px;
+      border-radius: 4px;
+      transition: 0.15s;
+    }
+    .bottom-categories a:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .bottom-categories .highlight-pill {
+      color: #fbcfe8;
+      font-weight: 800;
+    }
+
+    /* -------------------------------------------------------------
+       CART DRAWER
        ------------------------------------------------------------- */
     .cart-drawer-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(74, 4, 78, 0.45);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -582,22 +494,20 @@
       right: 0;
       bottom: 0;
       width: 100%;
-      max-width: 440px;
+      max-width: 420px;
       background: var(--surface);
       color: var(--text-main);
-      box-shadow: -4px 0 20px rgba(0,0,0,0.25);
+      box-shadow: -4px 0 25px rgba(219, 39, 119, 0.2);
       display: flex;
       flex-direction: column;
       transform: translateX(100%);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 2001;
     }
-    .cart-drawer.active {
-      transform: translateX(0);
-    }
+    .cart-drawer.active { transform: translateX(0); }
     .cart-header {
       padding: 16px 20px;
-      background: var(--bg-header-main);
+      background: var(--pink-deep);
       color: #ffffff;
       display: flex;
       justify-content: space-between;
@@ -628,23 +538,25 @@
     .cart-item img {
       width: 70px;
       height: 70px;
-      object-fit: contain;
-      background: #f8fafc;
-      border-radius: 6px;
+      object-fit: cover;
+      background: var(--pink-soft);
+      border-radius: 8px;
     }
     .cart-item-details { flex: 1; }
     .cart-item-details h4 {
       font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .cart-item-details .price {
       font-weight: 700;
+      margin-bottom: 4px;
       color: var(--text-main);
     }
+    .cart-item-details .price {
+      font-weight: 800;
+      color: var(--pink-deep);
+    }
     .cart-remove-link {
-      color: #cc0c39;
+      color: var(--badge-deal);
       font-size: 0.75rem;
+      font-weight: 700;
       cursor: pointer;
       margin-top: 6px;
       display: inline-block;
@@ -657,179 +569,113 @@
     .cart-footer {
       padding: 20px;
       border-top: 1px solid var(--border);
-      background: var(--surface);
+      background: var(--pink-soft);
     }
     .subtotal-row {
       display: flex;
       justify-content: space-between;
       font-size: 1.1rem;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 14px;
+      color: var(--pink-deep);
     }
     .btn-checkout {
       width: 100%;
-      background-color: var(--btn-buy);
-      color: #111;
-      border: 1px solid rgba(0,0,0,0.1);
+      background-color: var(--pink-deep);
+      color: #ffffff;
+      border: none;
       padding: 12px;
-      border-radius: 8px;
-      font-weight: 700;
+      border-radius: 999px;
+      font-weight: 800;
       font-size: 0.95rem;
       cursor: pointer;
+      box-shadow: 0 4px 15px rgba(219, 39, 119, 0.35);
+      transition: background 0.15s;
     }
-    .btn-checkout:hover { background-color: var(--btn-buy-hover); }
+    .btn-checkout:hover { background-color: var(--pink-hover); }
 
     /* -------------------------------------------------------------
        FOOTER
        ------------------------------------------------------------- */
     .back-to-top {
-      background: #37475a;
-      color: #ffffff;
+      background: var(--pink-base);
+      color: var(--pink-deep);
       text-align: center;
-      padding: 14px 0;
+      padding: 12px 0;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 800;
       cursor: pointer;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      transition: 0.15s;
     }
-    .back-to-top:hover { background: #485769; }
+    .back-to-top:hover { background: #f472b6; color: #fff; }
+
     .footer-main {
-      background: var(--bg-header-main);
-      color: #dddddd;
-      padding: 48px 0 20px;
+      background: #831843;
+      color: #fce7f3;
+      padding: 40px 0 30px;
       font-size: 0.85rem;
+      border-radius: 20px 20px 0 0;
     }
     .footer-cols {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 32px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     }
     .footer-col h4 {
       color: #ffffff;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       font-size: 0.95rem;
     }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 8px; }
     .footer-col a {
-      color: #cccccc;
+      color: #fbcfe8;
       text-decoration: none;
+      font-weight: 500;
     }
-    .footer-col a:hover { text-decoration: underline; }
+    .footer-col a:hover { text-decoration: underline; color: #ffffff; }
     .footer-bottom-bar {
       text-align: center;
-      padding-top: 24px;
+      padding-top: 20px;
       font-size: 0.78rem;
-      color: #999999;
+      color: #fbcfe8;
     }
 
-    /* -------------------------------------------------------------
-       RESPONSIVE BREAKPOINTS
-       ------------------------------------------------------------- */
-    @media (max-width: 1100px) {
+    @media (max-width: 1024px) {
       .quad-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-      .nav-deliver, .nav-account, .nav-orders { display: none; }
       .quad-grid { grid-template-columns: 1fr; }
-      .hero-stage { height: 360px; margin-bottom: -140px; }
       .footer-cols { grid-template-columns: 1fr 1fr; }
+      .hero-stage { height: 320px; margin-bottom: -120px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- PRIMARY AMAZON HEADER -->
-  <header class="header-primary">
-    <a href="#" class="brand-logo">
-      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-      Instant<span>Mart</span>
-    </a>
-
-    <div class="nav-deliver">
-      <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-      <div>
-        <small>Deliver to</small>
-        <strong>India</strong>
-      </div>
-    </div>
-
-    <!-- SEARCH BAR -->
-    <div class="nav-search">
-      <select class="search-scope">
-        <option>All</option>
-        <option>Electronics</option>
-        <option>Computers</option>
-        <option>Fashion</option>
-      </select>
-      <input type="text" class="search-input" id="searchBox" placeholder="Search InstantMart (Try 'Laptop', 'Headphones', 'Watch')..." />
-      <button class="search-submit" aria-label="Search">
-        <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="2.5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-4.35-4.35"/></svg>
-      </button>
-    </div>
-
-    <!-- LIVE THEME SWITCHER -->
-    <div class="theme-selector-box">
-      <span>Theme:</span>
-      <select class="theme-dropdown" id="themeSwitch">
-        <option value="amazon">Amazon Original (Navy/Amber)</option>
-        <option value="modern-violet">Modern Indigo & Violet</option>
-        <option value="emerald">Emerald Prime & Gold</option>
-        <option value="slate-dark">Cyber Slate (Midnight)</option>
-      </select>
-    </div>
-
-    <a href="#" class="nav-account">
-      <small>Hello, Sign in</small>
-      <strong>Account & Lists ▾</strong>
-    </a>
-
-    <a href="#" class="nav-orders">
-      <small>Returns</small>
-      <strong>& Orders</strong>
-    </a>
-
-    <!-- CART BUTTON -->
-    <button class="nav-cart-btn" id="openCartBtn">
-      <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-      <span>Cart</span>
-      <span class="cart-pill" id="cartBadge">0</span>
-    </button>
-  </header>
-
-  <!-- SUB NAVIGATION -->
-  <nav class="header-secondary">
-    <a href="#" style="font-weight: 700;">☰ All</a>
-    <a href="#deals" class="highlight-pill">Today's Deals</a>
-    <a href="#electronics">Electronics</a>
-    <a href="#laptops">Laptops & PCs</a>
-    <a href="#home">Home & Kitchen</a>
-    <a href="#fashion">Fashion</a>
-    <a href="#prime">InstantPrime Video</a>
-    <a href="#bestsellers">Customer Service</a>
-  </nav>
-
-  <!-- HERO CAROUSEL -->
+  <!-- HERO CAROUSEL AT TOP -->
   <div class="hero-stage">
-    <div class="carousel-slide active" style="background-image: linear-gradient(to bottom, rgba(19, 25, 33, 0.4), var(--bg-body)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1800&q=80');"></div>
-    <div class="carousel-slide" style="background-image: linear-gradient(to bottom, rgba(19, 25, 33, 0.4), var(--bg-body)), url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1800&q=80');"></div>
-    <div class="carousel-slide" style="background-image: linear-gradient(to bottom, rgba(19, 25, 33, 0.4), var(--bg-body)), url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1800&q=80');"></div>
+    <div class="carousel-slide active" style="background-image: linear-gradient(to bottom, rgba(131, 24, 67, 0.2), var(--bg-body)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1800&q=80');"></div>
+    <div class="carousel-slide" style="background-image: linear-gradient(to bottom, rgba(131, 24, 67, 0.2), var(--bg-body)), url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1800&q=80');"></div>
+    <div class="carousel-slide" style="background-image: linear-gradient(to bottom, rgba(131, 24, 67, 0.2), var(--bg-body)), url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1800&q=80');"></div>
     
     <button class="hero-prev" id="prevHero">‹</button>
     <button class="hero-next" id="nextHero">›</button>
   </div>
 
   <main class="wrapper">
-    <!-- AMAZON QUAD DISCOVERY CARDS -->
+    <!-- QUAD DISCOVERY TILES -->
     <section class="quad-grid">
-      <!-- Card 1 -->
       <div class="quad-card">
         <h3>Upgrade your workspace</h3>
         <div class="quad-thumbnails">
           <a href="#" class="quad-item">
             <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=300&q=80" alt="Laptops">
-            <small>Laptops & Desktops</small>
+            <small>Laptops & PCs</small>
           </a>
           <a href="#" class="quad-item">
             <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=300&q=80" alt="Monitors">
@@ -837,94 +683,91 @@
           </a>
           <a href="#" class="quad-item">
             <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=300&q=80" alt="Keyboards">
-            <small>Mechanical Keyboards</small>
+            <small>Keyboards</small>
           </a>
           <a href="#" class="quad-item">
             <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=300&q=80" alt="Mice">
             <small>Ergonomic Mice</small>
           </a>
         </div>
-        <a href="#" class="see-more">See more workstation essentials</a>
+        <a href="#" class="see-more">See more workspace items →</a>
       </div>
 
-      <!-- Card 2 -->
       <div class="quad-card">
-        <h3>Gaming & High Performance</h3>
+        <h3>Gaming & Audio</h3>
         <div class="quad-thumbnails">
           <a href="#" class="quad-item">
-            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=300&q=80" alt="Gaming Headsets">
-            <small>Surround Audio</small>
+            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=300&q=80" alt="Audio">
+            <small>Pro Headsets</small>
           </a>
           <a href="#" class="quad-item">
             <img src="https://images.unsplash.com/photo-1592840496694-26d035b52b48?auto=format&fit=crop&w=300&q=80" alt="Consoles">
-            <small>Next-Gen Consoles</small>
+            <small>Consoles</small>
           </a>
           <a href="#" class="quad-item">
-            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=300&q=80" alt="PC Hardware">
-            <small>Graphics & GPUs</small>
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=300&q=80" alt="Hardware">
+            <small>Accessories</small>
           </a>
           <a href="#" class="quad-item">
             <img src="https://images.unsplash.com/photo-1612287233214-5d9a86d26785?auto=format&fit=crop&w=300&q=80" alt="Controllers">
-            <small>Wireless Controllers</small>
+            <small>Controllers</small>
           </a>
         </div>
-        <a href="#" class="see-more">Discover gaming deals</a>
+        <a href="#" class="see-more">Discover gaming deals →</a>
       </div>
 
-      <!-- Card 3 -->
       <div class="quad-card">
-        <h3>Smart living & Wearables</h3>
+        <h3>Smart Living & Devices</h3>
         <div class="quad-thumbnails">
           <a href="#" class="quad-item">
             <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=80" alt="Smartwatches">
             <small>Smartwatches</small>
           </a>
           <a href="#" class="quad-item">
-            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=300&q=80" alt="Fitness Bands">
+            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=300&q=80" alt="Fitness">
             <small>Fitness Trackers</small>
           </a>
           <a href="#" class="quad-item">
-            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=300&q=80" alt="Smartphones">
-            <small>5G Smartphones</small>
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=300&q=80" alt="Phones">
+            <small>5G Phones</small>
           </a>
           <a href="#" class="quad-item">
-            <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=300&q=80" alt="Home Theater">
+            <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=300&q=80" alt="TVs">
             <small>Smart 4K TVs</small>
           </a>
         </div>
-        <a href="#" class="see-more">Explore connected tech</a>
+        <a href="#" class="see-more">Explore smart gadgets →</a>
       </div>
 
-      <!-- Card 4 -->
       <div class="quad-card">
-        <h3>Deals on top fashion</h3>
+        <h3>Pastel Fashion Trends</h3>
         <div class="quad-thumbnails">
           <a href="#" class="quad-item">
-            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=300&q=80" alt="T-Shirts">
-            <small>Organic Tees</small>
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=300&q=80" alt="Tees">
+            <small>Boxy Tees</small>
           </a>
           <a href="#" class="quad-item">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80" alt="Footwear">
-            <small>Running Shoes</small>
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80" alt="Sneakers">
+            <small>Sneakers</small>
           </a>
           <a href="#" class="quad-item">
-            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=300&q=80" alt="Outerwear">
-            <small>Jackets & Hoodies</small>
+            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=300&q=80" alt="Hoodies">
+            <small>Cozy Hoodies</small>
           </a>
           <a href="#" class="quad-item">
             <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=300&q=80" alt="Watches">
-            <small>Classic Watches</small>
+            <small>Minimal Watches</small>
           </a>
         </div>
-        <a href="#" class="see-more">Shop clothing & accessories</a>
+        <a href="#" class="see-more">Shop clothing & accessories →</a>
       </div>
     </section>
 
-    <!-- LIGHTNING DEALS BANNER -->
+    <!-- LIGHTNING DEALS -->
     <div class="deal-banner">
       <div style="display: flex; align-items: center;">
-        <span class="deal-badge">LIGHTNING DEAL</span>
-        <strong>Prime Big Saving Days: Ends in <span class="deal-timer" id="countdown">04h 28m 15s</span></strong>
+        <span class="deal-badge">🌸 PINK SPECIAL DEAL</span>
+        <strong>Big Spring Savings: Ends in <span class="deal-timer" id="countdown">04h 28m 15s</span></strong>
       </div>
       <a href="#catalog" style="color: var(--link); font-weight: 700; text-decoration: none;">View All 30+ Deals →</a>
     </div>
@@ -942,10 +785,99 @@
       </div>
 
       <div class="products-row" id="productGrid">
-        <!-- Products rendered dynamically by JS -->
+        <!-- Rendered by JS -->
       </div>
     </section>
+
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      ↑ Back to Top
+    </div>
   </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-main">
+    <div class="wrapper">
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Get to Know Us</h4>
+          <ul>
+            <li><a href="#">About InstantMart</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press Releases</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect with Us</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Pinterest</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Partner With Us</h4>
+          <ul>
+            <li><a href="#">Sell on InstantMart</a></li>
+            <li><a href="#">Brand Accelerator</a></li>
+            <li><a href="#">Affiliate Network</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul>
+            <li><a href="#">Your Account</a></li>
+            <li><a href="#">Easy Returns</a></li>
+            <li><a href="#">Help & FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        © 2026 InstantMart Inc. — Styled in Baby Pink & Rose Gold.
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BOTTOM NAVIGATION DOCK (MOVED FROM TOP TO BOTTOM) -->
+  <div class="bottom-nav-dock">
+    <div class="bottom-primary">
+      <a href="#" class="brand-logo">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Instant<span>Mart</span>
+      </a>
+
+      <!-- SEARCH BAR -->
+      <div class="nav-search">
+        <select class="search-scope">
+          <option>All</option>
+          <option>Electronics</option>
+          <option>Computers</option>
+          <option>Fashion</option>
+        </select>
+        <input type="text" class="search-input" id="searchBox" placeholder="Search devices, watches, accessories..." />
+        <button class="search-submit" aria-label="Search">
+          <svg width="18" height="18" fill="none" stroke="#ffffff" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="2.5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-4.35-4.35"/></svg>
+        </button>
+      </div>
+
+      <!-- CART BUTTON -->
+      <button class="nav-cart-btn" id="openCartBtn">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <span>Cart</span>
+        <span class="cart-pill" id="cartBadge">0</span>
+      </button>
+    </div>
+
+    <!-- QUICK CATEGORY STRIP -->
+    <div class="bottom-categories">
+      <a href="#">☰ All</a>
+      <a href="#deals" class="highlight-pill">🌸 Today's Deals</a>
+      <a href="#electronics">Electronics</a>
+      <a href="#laptops">Laptops</a>
+      <a href="#home">Home</a>
+      <a href="#fashion">Fashion</a>
+      <a href="#support">Help</a>
+    </div>
+  </div>
 
   <!-- CART SLIDE-OUT DRAWER -->
   <div class="cart-drawer-backdrop" id="cartBackdrop"></div>
@@ -962,63 +894,12 @@
         <span>Subtotal:</span>
         <span id="cartSubtotal">₹0</span>
       </div>
-      <button class="btn-checkout" onclick="alert('Proceeding to 256-bit Secure Checkout!')">Proceed to Checkout</button>
+      <button class="btn-checkout" onclick="alert('Proceeding to Secure Checkout!')">Proceed to Checkout</button>
     </div>
   </aside>
 
-  <!-- FOOTER -->
-  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-    Back to top
-  </div>
-
-  <footer class="footer-main">
-    <div class="wrapper">
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Get to Know Us</h4>
-          <ul>
-            <li><a href="#">About InstantMart</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Press Releases</a></li>
-            <li><a href="#">Amazon Science</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Connect with Us</h4>
-          <ul>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Instagram</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Make Money with Us</h4>
-          <ul>
-            <li><a href="#">Sell on InstantMart</a></li>
-            <li><a href="#">Sell under Accelerator</a></li>
-            <li><a href="#">Protect and Build Your Brand</a></li>
-            <li><a href="#">Fulfillment by InstantMart</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Let Us Help You</h4>
-          <ul>
-            <li><a href="#">Your Account</a></li>
-            <li><a href="#">Returns Centre</a></li>
-            <li><a href="#">100% Purchase Protection</a></li>
-            <li><a href="#">Help & FAQs</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom-bar">
-        © 2026 InstantMart Inc. An Amazon-inspired responsive flagship prototype.
-      </div>
-    </div>
-  </footer>
-
-  <!-- INTERACTIVITY & CATALOG SCRIPT -->
+  <!-- INTERACTION SCRIPT -->
   <script>
-    // PRODUCT DATA
     const products = [
       {
         id: 1,
@@ -1044,7 +925,7 @@
       },
       {
         id: 3,
-        title: "Sony WH-1000XM5 Wireless Industry Leading Noise Canceling Headphones",
+        title: "Sony WH-1000XM5 Wireless Noise Canceling Headphones",
         category: "audio",
         price: 2499,
         oldPrice: 3999,
@@ -1055,7 +936,7 @@
       },
       {
         id: 4,
-        title: "Sony Bravia 43-inch 4K Ultra HD Smart LED Google TV with Dolby Atmos",
+        title: "Sony Bravia 43-inch 4K Ultra HD Smart LED Google TV",
         category: "electronics",
         price: 28999,
         oldPrice: 34999,
@@ -1066,7 +947,7 @@
       },
       {
         id: 5,
-        title: "Apple Watch Series 9 [GPS 45mm] Smartwatch with Starlight Aluminum Case",
+        title: "Apple Watch Series 9 [GPS 45mm] Smartwatch with Rose Starlight Case",
         category: "electronics",
         price: 2299,
         oldPrice: 3499,
@@ -1106,7 +987,7 @@
             <span class="price-main">${item.price.toLocaleString('en-IN')}</span>
             <span class="price-crossed">₹${item.oldPrice.toLocaleString('en-IN')}</span>
           </div>
-          <div class="prime-tag">✓ <strong>Prime</strong> FREE One-Day</div>
+          <div class="prime-tag">🌸 InstantMart Express Delivery</div>
           <button class="btn-add-cart" onclick="addToCart(${item.id})">Add to Cart</button>
         </article>
       `).join('');
@@ -1120,7 +1001,7 @@
       renderProducts(filtered);
     });
 
-    // CATEGORY FILTER TABS
+    // FILTER TABS
     document.querySelectorAll('.filter-pill').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
@@ -1129,11 +1010,6 @@
         if (cat === 'all') renderProducts(products);
         else renderProducts(products.filter(p => p.category === cat));
       });
-    });
-
-    // LIVE THEME SWITCHER
-    document.getElementById('themeSwitch').addEventListener('change', (e) => {
-      document.documentElement.setAttribute('data-theme', e.target.value);
     });
 
     // HERO CAROUSEL
@@ -1158,7 +1034,7 @@
       document.getElementById('countdown').textContent = `${h}h ${m}m ${s}s`;
     }, 1000);
 
-    // CART DRAWER LOGIC
+    // CART DRAWER
     const cartDrawer = document.getElementById('cartDrawer');
     const cartBackdrop = document.getElementById('cartBackdrop');
     const openCartBtn = document.getElementById('openCartBtn');
@@ -1205,7 +1081,7 @@
           <div class="cart-item-details">
             <h4>${item.title}</h4>
             <div class="price">₹${item.price.toLocaleString('en-IN')}</div>
-            <span class="cart-remove-link" onclick="removeFromCart(${idx})">Delete</span>
+            <span class="cart-remove-link" onclick="removeFromCart(${idx})">Remove</span>
           </div>
         </div>
       `).join('');
